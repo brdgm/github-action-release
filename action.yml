@@ -18,6 +18,11 @@ inputs:
     description: GH_SITE_DEPLOY_NAME secret
     required: true
 
+outputs:
+  app-deploy-name:
+    description: Application deploy name
+    value: ${{ steps.package_json.outputs.appDeployName }}
+
 runs:
   using: composite
 

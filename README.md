@@ -16,13 +16,14 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Production
-      url: "https://brdgm.me/${{ steps.package_json.outputs.appDeployName }}"
+      url: "https://brdgm.me/${{ steps.release.outputs.app-deploy-name }}"
 
     permissions:
       contents: write
 
     steps:
       - uses: brdgm/github-action-release@v1
+        id: release
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           gh-site-deploy-pat: ${{ secrets.GH_SITE_DEPLOY_PAT }}
