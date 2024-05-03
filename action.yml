@@ -37,8 +37,13 @@ runs:
         cache: npm
 
     - run: npm ci
+      shell: bash
+
     - run: npm run test:unit
+      shell: bash
+
     - run: npm run build
+      shell: bash
 
     - name: Read properties from package.json
       id: package_json
@@ -50,14 +55,21 @@ runs:
       run: |
         git config user.name "GitHub Actions"
         git config user.email noreply@github.com
-  
+      shell: bash
+
     - name: Install git flow extensions
       run: |
         sudo apt-get install git-flow
-  
+      shell: bash
+
     - run: git flow init --defaults        
+      shell: bash
+
     - run: git flow release start ${{ steps.package_json.outputs.version }}
+      shell: bash
+
     - run: git flow release finish ${{ steps.package_json.outputs.version }} --push --message "Release"
+      shell: bash
 
     - name: Copy to Site
       uses: cpina/github-action-push-to-another-repository@v1.7.2
@@ -82,6 +94,7 @@ runs:
         git add package.json package-lock.json
         git commit --message "set next version"
         git push
+      shell: bash
 
     - uses: ncipollo/release-action@v1
       with:
