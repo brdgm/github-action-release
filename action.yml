@@ -28,6 +28,8 @@ runs:
 
   steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Disable shallow as gitflow requires access to multiple branches
 
     - uses: actions/setup-node@v4
       with:
