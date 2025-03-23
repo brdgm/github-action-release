@@ -99,8 +99,12 @@ runs:
         git push
       shell: bash
 
-    - uses: ncipollo/release-action@v1
+    - uses: release-drafter/release-drafter@v6
       with:
-        token: ${{ inputs.github-token }}
+        disable-autolabeler: true
+        name: ${{ steps.package_json.outputs.version }}
         tag: ${{ steps.package_json.outputs.version }}
-        generateReleaseNotes: true
+        version: ${{ steps.package_json.outputs.version }}
+        publish: true
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}

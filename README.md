@@ -11,6 +11,9 @@ name: Release and Deploy
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -20,9 +23,10 @@ jobs:
 
     permissions:
       contents: write
+      pull-requests: read
 
     steps:
-      - uses: brdgm/github-action-release@v1
+      - uses: brdgm/github-action-release@v2
         id: release
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
