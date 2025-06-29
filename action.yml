@@ -17,6 +17,12 @@ inputs:
   gh-site-deploy-name:
     description: GH_SITE_DEPLOY_NAME secret
     required: true
+  stats-forms-url:
+    description: VITE_STATS_FORM_URL variable
+    required: false
+  stats-field-mapping:
+    description: VITE_STATS_FIELD_MAPPING variable
+    required: false
 
 outputs:
   app-deploy-name:
@@ -47,6 +53,9 @@ runs:
 
     - run: npm run build
       shell: bash
+      env:
+        VITE_STATS_FORM_URL: ${{ inputs.stats-forms-url }}
+        VITE_STATS_FIELD_MAPPING: ${{ inputs.stats-field-mapping }}
 
     - name: Read properties from package.json
       id: package_json
