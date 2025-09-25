@@ -84,7 +84,7 @@ runs:
       shell: bash
 
     - name: Copy to Site
-      uses: cpina/github-action-push-to-another-repository@v1.7.2
+      uses: cpina/github-action-push-to-another-repository@v1.7.3
       env:
         API_TOKEN_GITHUB: ${{ inputs.gh-site-deploy-pat }}
       with:
