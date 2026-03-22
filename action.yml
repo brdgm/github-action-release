@@ -110,7 +110,6 @@ runs:
 
     - uses: release-drafter/release-drafter@v7
       with:
-        disable-autolabeler: true
         name: ${{ steps.package_json.outputs.version }}
         tag: ${{ steps.package_json.outputs.version }}
         version: ${{ steps.package_json.outputs.version }}
