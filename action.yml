@@ -33,11 +33,11 @@ runs:
   using: composite
 
   steps:
-    - uses: actions/checkout@v7
+    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
       with:
         fetch-depth: 0  # Disable shallow as gitflow requires access to multiple branches
 
-    - uses: actions/setup-node@v6
+    - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
       with:
         node-version: lts/*
         cache: npm
@@ -84,7 +84,7 @@ runs:
       shell: bash
 
     - name: Copy to Site
-      uses: cpina/github-action-push-to-another-repository@v1.7.3
+      uses: cpina/github-action-push-to-another-repository@55306faa4ed53b815ae49e564af8cfb359d32ae2 # v1.7.3
       env:
         API_TOKEN_GITHUB: ${{ inputs.gh-site-deploy-pat }}
       with:
@@ -108,7 +108,7 @@ runs:
         git push
       shell: bash
 
-    - uses: release-drafter/release-drafter@v7
+    - uses: release-drafter/release-drafter@4d75298e00d9e34c483e5ff8c68d0ea1c1940c1e # v7
       with:
         name: ${{ steps.package_json.outputs.version }}
         tag: ${{ steps.package_json.outputs.version }}
